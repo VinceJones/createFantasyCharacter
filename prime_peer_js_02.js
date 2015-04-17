@@ -10,11 +10,7 @@ function randomNumber(min, max) {
 var people = [];
 var i;
 
-for ( i = 0; i < 20; i++){
-	people.push( new MakePeople(randomNumber(30, 50), randomNumber(20,30), randomNumber(10, 20), randomNumber(15, 25)));		
-}
-
-function MakePeople(health, mana, attack, armor){
+function Person(health, mana, attack, armor){
 	this.health = health;
 	this.mana = mana;
 	this.attack = attack;
@@ -34,12 +30,20 @@ function MakePeople(health, mana, attack, armor){
 	};
 }
 
-for ( i = 0; i < people.length; i++){
-	people[i].healthCheck();
-	people[i].manaCheck();
-	people[i].attackCheck();
-	people[i].armorCheck();
-	console.log("Health: " + people[i].health + ", Mana: " + people[i].mana + ", Attack: " + people[i].attack + ", Armor: " + people[i].armor);
-	var x = document.getElementById("characters");
-	x.innerHTML += "Health: " + people[i].health+"<br>Mana: " + people[i].mana + "<br>Attack: " + people[i].attack + "<br>Armor: " + people[i].armor+"<br><br>";
+function makePeople(x) {
+	for ( i = 0; i < x; i++){
+		people.push( new Person(randomNumber(30, 50), randomNumber(20,30), randomNumber(10, 20), randomNumber(15, 25)));		
+	}
+	for ( i = 0; i < people.length; i++){
+		people[i].healthCheck();
+		people[i].manaCheck();
+		people[i].attackCheck();
+		people[i].armorCheck();
+		console.log("Health: " + people[i].health + ", Mana: " + people[i].mana + ", Attack: " + people[i].attack + ", Armor: " + people[i].armor);
+		var x = document.getElementById("characters");
+			x.innerHTML += "Health: " + people[i].health+"<br>Mana: " + people[i].mana + "<br>Attack: " + people[i].attack + "<br>Armor: " + people[i].armor+"<br><br>";
+	}
 }
+makePeople(20);
+
+
